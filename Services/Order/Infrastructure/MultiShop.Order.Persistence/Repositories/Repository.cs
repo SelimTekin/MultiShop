@@ -22,7 +22,7 @@ namespace MultiShop.Order.Persistence.Repositories
 
 		public async Task CreateAsync(T entity)
 		{
-			_context.Set<T>().Add(entity);
+			_context.Set<T>().Add(entity); // Entity Framework Core'un bir DbSet'ine erişir. Bu, veritabanındaki T türündeki tablolarla çalışmak için kullanılır.
 			await _context.SaveChangesAsync();
 		}
 
