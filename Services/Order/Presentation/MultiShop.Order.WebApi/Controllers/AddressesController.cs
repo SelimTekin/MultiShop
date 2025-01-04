@@ -16,12 +16,13 @@ namespace MultiShop.Order.WebApi.Controllers
 		private readonly UpdateAddressCommandHandler _updateAddressCommandHandler;
 		private readonly RemoveAddressCommandHandler _removeAddressCommandHandler;
 
-		public AddressesController(GetAddressQueryHandler getAddressQueryHandler, CreateAddressCommandHandler createAddressCommandHandler, UpdateAddressCommandHandler updateAddressCommandHandler, RemoveAddressCommandHandler removeAddressCommandHandler)
+		public AddressesController(GetAddressQueryHandler getAddressQueryHandler, CreateAddressCommandHandler createAddressCommandHandler, UpdateAddressCommandHandler updateAddressCommandHandler, RemoveAddressCommandHandler removeAddressCommandHandler, GetAddressByIdQueryHandler getAddressByIdQueryHandler)
 		{
 			_getAddressQueryHandler = getAddressQueryHandler;
 			_createAddressCommandHandler = createAddressCommandHandler;
 			_updateAddressCommandHandler = updateAddressCommandHandler;
 			_removeAddressCommandHandler = removeAddressCommandHandler;
+			_getAddressByIdQueryHandler = getAddressByIdQueryHandler;
 		}
 
 		[HttpGet]
