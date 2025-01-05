@@ -21,7 +21,7 @@ namespace MultiShop.Order.Application.Features.Handlers.AddressHandlers
 		public async Task<List<GetAddressByIdQueryResult>> Handle()
 		{
 			var values = await _repository.GetAllAsync();
-			return values.Select(x => new GetAddressByIdQueryResult({
+			return values.Select(x => new GetAddressByIdQueryResult{
 				AddressId = x.AddressId,
 				City = x.City,
 				Detail = x.Detail,
