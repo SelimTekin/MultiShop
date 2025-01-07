@@ -15,8 +15,4 @@
     <ProjectReference Include="..\MultiShop.Order.Domain\MultiShop.Order.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Mediator\Handlers\" />
-  </ItemGroup>
-
 </Project>
