@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MultiShop.Order.Application.Features.Commands.OrderDetailCommands;
-using MultiShop.Order.Application.Features.Handlers.OrderDetailHandlers;
+using MultiShop.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
+using MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using MultiShop.Order.Application.Features.Queries.OrderDetailQueries;
 
 namespace MultiShop.Order.WebApi.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class OrderDetailsController : ControllerBase
 	{

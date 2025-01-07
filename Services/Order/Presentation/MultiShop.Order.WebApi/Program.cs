@@ -1,5 +1,5 @@
-using MultiShop.Order.Application.Features.Handlers.AddressHandlers;
-using MultiShop.Order.Application.Features.Handlers.OrderDetailHandlers;
+using MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
+using MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
