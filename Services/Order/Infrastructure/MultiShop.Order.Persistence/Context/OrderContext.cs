@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Order.Persistence.Context
 {
-	public class OrderContext:DbContext
+	public class OrderContext : DbContext
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer("Server=...;initial Catalog=MultiShopOrderDb;integrated Security=true");
+			optionsBuilder.UseSqlServer("Server=localhost,1440;initial Catalog=MultiShopOrderDb;User=sa;Password=123456aA*");
 		}
 
 		DbSet<Address> Addresses { get; set; }
