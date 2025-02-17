@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.CategoryDtos;
 using MultiShop.Catalog.Services.CategoryServices;
@@ -6,6 +7,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace MultiShop.Catalog.Controllers
 {
+	[Authorize] // Authorize'a sahip değilse buraya giriş yapamayacak kullanıcı
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CategoriesController : ControllerBase

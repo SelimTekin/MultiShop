@@ -17,12 +17,13 @@ namespace MultiShop.IdentityServer
             // ResourceCatalog ismindeki key'e sahip olan bir mikroservis kullanıcısı CatalogFullPermission işlemini gerçekleştirebilecek.
             new ApiResource("ResourceCatalog"){Scopes = {"CatalogFullPermission", "CatalogReadPermission"}},
             new ApiResource("ResourceDiscount"){Scopes = {"DiscountFullPermission"}},
-            new ApiResource("ResourceOrder"){Scopes = {"OrderFullPermission"}}
+            new ApiResource("ResourceOrder"){Scopes = {"OrderFullPermission"}},
+			new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
 		};
 
 		public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
 		{
-            // Token'ının aldığımız kullanıcının hangi yetkilere erişim sağlayacağını belirledik
+            // Token'ını aldığımız kullanıcının hangi yetkilere erişim sağlayacağını belirledik
             new IdentityResources.OpenId(),
 			new IdentityResources.Email(),
 			new IdentityResources.Profile(),
@@ -35,6 +36,7 @@ namespace MultiShop.IdentityServer
 			new ApiScope("CatalogReadPermission", "Reading authority for catalog operations"),
 			new ApiScope("DiscountFullPermission", "Full authority for catalog operations"),
 			new ApiScope("OrderFullPermission", "Full authority for catalog operations"),
+			new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
 		};
 
 		public static IEnumerable<Client> Clients => new Client[]
@@ -46,7 +48,7 @@ namespace MultiShop.IdentityServer
 				ClientName="Multi Shop Visitor User",
 				AllowedGrantTypes=GrantTypes.ClientCredentials, // Neye izin verildiği ile ilgili bir property -> Kimlik işlemleri için kullanacağımız property
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
-				AllowedScopes={ "CatalogReadPermission" } // okuma yetkisi olsun sadece
+				AllowedScopes={ "DiscountFullPermission" }
 			},
 
 			// Manager

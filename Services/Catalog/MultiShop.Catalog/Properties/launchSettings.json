@@ -2,13 +2,13 @@
   "profiles": {
     "MultiShop.Catalog": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false, // uygulama çalışacak ama tarayıcı açılmayacak
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7259;http://localhost:5173"
+      "applicationUrl": "https://localhost:7070;"
     },
     "IIS Express": {
       "commandName": "IISExpress",

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MultiShop.Catalog.Services.CategoryServices;
@@ -10,6 +11,13 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // REGISTRATIONS
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+	opt.Authority = builder.Configuration["IdentityServerUrl"];
+	opt.Audience = "ResourceCatalog"; // bu key'e sahip kullanýcý config dosyasýndaki bu key'e karþýlýk gelen iþlemleri yapabilecek
+	opt.RequireHttpsMetadata = false; // http yaptýðýmýz için false yaptýk (appsetting.json dosyasýnda)
+});
 // Scoped -> Uygulamada ilgili metod çaðýrýldýðýnda bunun bir nesne örneðini oluþturacak.
 // ICategoryService çaðýrýldýðýnda CategoryService sýnýfýný çaðýr.
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -43,6 +51,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
