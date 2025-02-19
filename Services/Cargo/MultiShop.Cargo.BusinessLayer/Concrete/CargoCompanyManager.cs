@@ -8,9 +8,9 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
     {
         private readonly ICargoCompanyDal _cargoCompanyDal;
 
-        public CargoCompanyManager(ICargoCompanyDal _cargoCompanyDal)
+        public CargoCompanyManager(ICargoCompanyDal cargoCompanyDal)
         {
-            _cargoCompanyDal = _cargoCompanyDal;
+            _cargoCompanyDal = cargoCompanyDal;
         }
 
         public void TDelete(int id)
