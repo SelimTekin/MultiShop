@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Cargo.EntityLayer.Concrete
 {
-    internal class CargoDetail
+    public class CargoDetail
     {
+        public int CargoDetailId { get; set; }
+        public string SenderCustomer { get; set; }
+        public string ReceiverCustomer { get; set; }
+        public int Barcode { get; set; }
+        public int CargoCompanyId { get; set; }
+        public CargoCompany CargoCompany { get; set; }
     }
 }
