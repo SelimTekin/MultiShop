@@ -18,6 +18,7 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceCatalog"){Scopes = {"CatalogFullPermission", "CatalogReadPermission"}},
             new ApiResource("ResourceDiscount"){Scopes = {"DiscountFullPermission"}},
             new ApiResource("ResourceOrder"){Scopes = {"OrderFullPermission"}},
+			new ApiResource("ResourceCargo"){Scopes = {"CargoFullPermission"}},
 			new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
 		};
 
@@ -36,6 +37,7 @@ namespace MultiShop.IdentityServer
 			new ApiScope("CatalogReadPermission", "Reading authority for catalog operations"),
 			new ApiScope("DiscountFullPermission", "Full authority for catalog operations"),
 			new ApiScope("OrderFullPermission", "Full authority for catalog operations"),
+			new ApiScope("CargoFullPermission", "Full authority for cargo operations"),
 			new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
 		};
 
@@ -68,8 +70,8 @@ namespace MultiShop.IdentityServer
 				ClientName="Multi Shop Admin User",
 				AllowedGrantTypes=GrantTypes.ClientCredentials, // Neye izin verildiği ile ilgili bir property -> Kimlik işlemleri için kullanacağımız property
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
-				AllowedScopes={  "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission",
-				IdentityServerConstants.LocalApi.ScopeName, // yerel deki apiden scope'un adına ulaş
+				AllowedScopes={  "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission",
+                IdentityServerConstants.LocalApi.ScopeName, // yerel deki apiden scope'un adına ulaş
 				IdentityServerConstants.StandardScopes.Email,
 				IdentityServerConstants.StandardScopes.OpenId,
 				IdentityServerConstants.StandardScopes.Profile,
