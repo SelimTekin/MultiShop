@@ -51,7 +51,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             CargoCompany cargoCompany = new CargoCompany()
             {
-                CargoCompanyName = updateCargoCompanyDto.CargoCompanyName
+                CargoCompanyName = updateCargoCompanyDto.CargoCompanyName,
                 CargoCompanyId = updateCargoCompanyDto.CargoCompanyId
             };
             _cargoCompanyService.TUpdate(cargoCompany);
