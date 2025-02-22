@@ -6,15 +6,13 @@ using MultiShop.Basket.LoginServices;
 using MultiShop.Basket.Services;
 using MultiShop.Basket.Settings;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Kullanýcýnýn zorunlu olduðunu atadýk.
 var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-// jwt sitesinde sub direkt olarak geliyor fakat vs'de map'lenmiþ bir þekilde geliyor. O yüzden sub'ýn map'lemesini kaldýrdýk
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
 
-// Add services to the container.
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
     opt.Authority = builder.Configuration["IdentityServerUrl"];
@@ -25,7 +23,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
-builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RedisSettings")); // appsettings.json dosyasýndaki rediSettings kýsmýnýn ayarý
+builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RedisSettings"));
 builder.Services.AddSingleton<RedisService>(sp =>
 {
     var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
@@ -36,8 +34,11 @@ builder.Services.AddSingleton<RedisService>(sp =>
 
 builder.Services.AddControllers(opt =>
 {
-    opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy)); // Kullanýcýyý giriþ yapmaya zorladýk
+    opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
 });
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
