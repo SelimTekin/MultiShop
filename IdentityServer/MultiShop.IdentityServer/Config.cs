@@ -60,7 +60,7 @@ namespace MultiShop.IdentityServer
 			{
 				ClientId="MultiShopManagerId",
 				ClientName="Multi Shop Manager User",
-				AllowedGrantTypes=GrantTypes.ClientCredentials, // Neye izin verildiği ile ilgili bir property -> Kimlik işlemleri için kullanacağımız property
+				AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, // Giriş yapan kullanıcının şifresine göre çalışsın
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
 				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
 			},
@@ -70,7 +70,7 @@ namespace MultiShop.IdentityServer
 			{
 				ClientId="MultiShopAdminId",
 				ClientName="Multi Shop Admin User",
-				AllowedGrantTypes=GrantTypes.ClientCredentials, // Neye izin verildiği ile ilgili bir property -> Kimlik işlemleri için kullanacağımız property
+				AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, // Giriş yapan kullanıcının şifresine göre çalışsın
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
 				AllowedScopes={  "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName, // yereldeki apiden scope'un adına ulaş
