@@ -1,4 +1,4 @@
-﻿@model List<MultiShop.DtoLayer.CatalogDtos.CategoryDtos.ResultCategoryDto>
+﻿@model List<ResultCategoryDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="chart-box">
                 <h4>Kategori Listesi</h4>
-                <p>Kategori iile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz.</p>
+                <p>Kategori ile ilgili işlemlerinizi aşağıdaki tablo üzerinden gerçekleştirebilirsiniz.</p>
                 <div class="bs-example" data-example-id="bordered-table">
                     <table class="table table-bordered">
                         <thead>
@@ -27,8 +27,8 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <th scope="row">@item.CategroyID</th>
-                                    <td>@item.CategroyName</td>
+                                    <th scope="row">@item.CategoryID</th>
+                                    <td>@item.CategoryName</td>
 									<td><a href="#" class="btn btn-warning">Kategoriye Ait Ürünler</a></td>
 									<td><a href="#" class="btn btn-danger">Sil</a></td>
                                     <td><a href="#" class="btn btn-success">Güncelle</a></td>
@@ -36,10 +36,9 @@
                             }
                         </tbody>
                     </table>
-                    <a href="#" class="btn btn-primary">Yeni Kategori Girişi</a>
+                    <a href="/Admin/Category/CreateCategory/" class="btn btn-primary">Yeni Kategori Girişi</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-

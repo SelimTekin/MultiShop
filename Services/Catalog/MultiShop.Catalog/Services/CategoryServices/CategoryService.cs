@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Services.CategoryServices
 
 		public async Task DeleteCategoryAsync(string id)
 		{
-			await _categoryCollection.DeleteOneAsync(x => x.CategroyId == id); // x -> _categoryCollection
+			await _categoryCollection.DeleteOneAsync(x => x.CategoryId == id); // x -> _categoryCollection
 		}
 
 		public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
@@ -38,7 +38,7 @@ namespace MultiShop.Catalog.Services.CategoryServices
 
 		public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
 		{
-			var values = await _categoryCollection.Find<Category>(x => x.CategroyId == id).FirstOrDefaultAsync(); // <Category> -> sınıfı için çalışacak anlamına geliyor
+			var values = await _categoryCollection.Find<Category>(x => x.CategoryId == id).FirstOrDefaultAsync(); // <Category> -> sınıfı için çalışacak anlamına geliyor
 			return _mapper.Map<GetByIdCategoryDto>(values);
 		}
 
@@ -47,7 +47,7 @@ namespace MultiShop.Catalog.Services.CategoryServices
 			var values = _mapper.Map<Category>(updateCategoryDto);
 
 			// updateCategoryDto'dan gelen id'ye eşit olan collection'daki değeri bul ve values parametresindeki değerle güncelle
-			await _categoryCollection.FindOneAndReplaceAsync(x => x.CategroyId ==  updateCategoryDto.CategroyID, values); // FindOneAndReplaceAsync mongodb'de güncelleme yapar
+			await _categoryCollection.FindOneAndReplaceAsync(x => x.CategoryId ==  updateCategoryDto.CategoryID, values); // FindOneAndReplaceAsync mongodb'de güncelleme yapar
 		}
 	}
 }

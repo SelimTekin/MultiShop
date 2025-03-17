@@ -39,4 +39,6 @@
     <ProjectReference Include="..\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties areas_4admin_4appsettings_1json__JsonSchema="https://json.schemastore.org/asmdef.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

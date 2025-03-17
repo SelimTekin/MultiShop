@@ -8,7 +8,6 @@ using System.Reflection.Metadata.Ecma335;
 namespace MultiShop.Catalog.Controllers
 {
 	[AllowAnonymous]
-	//[Authorize] // Authorize'a sahip değilse buraya giriş yapamayacak kullanıcı
 	[Route("api/[controller]")]
 	[ApiController]
 	public class CategoriesController : ControllerBase
