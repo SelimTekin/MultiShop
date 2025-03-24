@@ -12,12 +12,9 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 	public class CategoryController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IConfiguration _configuration;
-
-        public CategoryController(IHttpClientFactory httpClientFactory, IConfiguration configuration)
+        public CategoryController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-            _configuration = configuration;
         }
         [Route("Index")]
 		public async Task<IActionResult> Index()
