@@ -12,7 +12,9 @@ namespace MultiShop.Catalog.Entities
         public decimal ProductPrice { get; set; }
         public string ProductImageUrl { get; set; }
         public string ProductDescription { get; set; }
-        public string CategoryId { get; set; }
+		[BsonRepresentation(BsonType.ObjectId)]
+
+		public string CategoryId { get; set; }
 
         [BsonIgnore] // Veritabanına kaydedilmemesini sağlıyor. Yani bu satırı kullan ama veritabanına kaydetme pas geç
         public Category Category { get; set; }
