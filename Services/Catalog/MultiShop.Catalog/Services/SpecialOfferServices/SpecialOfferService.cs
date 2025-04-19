@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using MultiShop.Catalog.Dtos.SpecialOfferDtos;
 using MultiShop.Catalog.Entities;
+using MultiShop.Catalog.Settings;
 
 namespace MultiShop.Catalog.Services.SpecialOfferServices
 {
@@ -9,16 +10,17 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
     {
         private readonly IMongoCollection<SpecialOffer> _specialOfferCollection;
         private readonly IMapper _mapper;
-
-        public SpecialOfferService(IMongoCollection<SpecialOffer> specialOfferCollection, IMapper mapper)
+        public SpecialOfferService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
-            _specialOfferCollection = specialOfferCollection;
+            var client = new MongoClient(_databaseSettings.ConnectionString); // bağlantı stringi
+            var database = client.GetDatabase(_databaseSettings.DatabaseName); // veritabanını aldık
+            _specialOfferCollection = database.GetCollection<SpecialOffer>(_databaseSettings.SpecialOfferCollectionName); // collection'ı aldık
             _mapper = mapper;
         }
 
-        public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto SpecialOfferDto)
+        public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto specialOfferDto)
         {
-            var value = _mapper.Map<SpecialOffer>(SpecialOfferDto);
+            var value = _mapper.Map<SpecialOffer>(specialOfferDto);
             await _specialOfferCollection.InsertOneAsync(value);
         }
 
