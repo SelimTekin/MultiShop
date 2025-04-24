@@ -14,11 +14,13 @@
 				<br />
 				<div class="bs-example" data-example-id="bordered-table">
 					<form method="post">
-						<div class="form-group">
-							<label for="exampleInputEmail1">Kategori Adı</label>
-							<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kategori Adı" asp-for="CategoryName" >
-						</div>
+						<label>Kategori Adı</label>
+						<input type="text" class="form-control" asp-for="CategoryName">
+						<br />
+						<label>Kategori Görseli</label>
+						<input type="text" class="form-control" asp-for="ImageUrl">
 						<button class="btn btn-primary">Kategori Ekle</button>
+						<br />
 					</form>
 				</div>
 			</div>

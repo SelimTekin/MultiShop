@@ -1,7 +1,7 @@
 ﻿@model UpdateCategoryDto
 @{
-    ViewData["Title"] = "UpdateCategory";
-    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+	ViewData["Title"] = "UpdateCategory";
+	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
 <section class="content container-fluid">
@@ -12,11 +12,13 @@
 				<br />
 				<div class="bs-example" data-example-id="bordered-table">
 					<form method="post">
-						<div class="form-group">
-							<input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kategori Id" asp-for="CategoryID">
-							<label for="exampleInputEmail1">Kategori Adı</label>
-							<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kategori Adı" asp-for="CategoryName">
-						</div>
+						<input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Kategori Id" asp-for="CategoryID">
+						<label>Kategori Adı</label>
+						<input type="text" class="form-control" asp-for="CategoryName">
+						<br />
+						<label>Kategori Görseli</label>
+						<input type="text" class="form-control" asp-for="ImageUrl">
+						<br />
 						<button class="btn btn-primary">Kategori Güncelle</button>
 					</form>
 				</div>
