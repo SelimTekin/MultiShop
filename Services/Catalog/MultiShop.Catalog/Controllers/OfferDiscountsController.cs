@@ -35,21 +35,21 @@ namespace MultiShop.Catalog.Controllers
         public async Task<IActionResult> CreateOfferDiscount(CreateOfferDiscountDto createOfferDiscountDto)
         {
             await _offerDiscountService.CreateOfferDiscountAsync(createOfferDiscountDto);
-            return Ok("İndirimli Tekilf Başarıyla Eklendi");
+            return Ok("Özel Teklif Başarıyla Eklendi");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteOfferDiscount(string id)
         {
             await _offerDiscountService.DeleteOfferDiscountAsync(id);
-            return Ok("İndirimli Tekilf Başarıyla Silindi");
+            return Ok("Özel Teklif Başarıyla Silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateOfferDiscount(UpdateOfferDiscountDto updateOfferDiscountDto)
         {
             await _offerDiscountService.UpdateOfferDiscountAsync(updateOfferDiscountDto);
-            return Ok("İndirimli Tekilf Başarıyla Güncellendi");
+            return Ok("Özel Teklif Başarıyla Güncellendi");
         }
     }
 }
