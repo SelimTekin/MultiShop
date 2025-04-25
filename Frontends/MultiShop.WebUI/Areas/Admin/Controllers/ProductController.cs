@@ -14,7 +14,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 	public class ProductController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
-
 		public ProductController(IHttpClientFactory httpClientFactory)
 		{
 			_httpClientFactory = httpClientFactory;
