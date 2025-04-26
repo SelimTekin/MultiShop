@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.BrandDtos
+﻿namespace MultiShop.DtoLayer.CatalogDtos.BrandDtos
 {
     public class ResultBrandDto
     {
