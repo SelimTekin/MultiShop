@@ -10,7 +10,6 @@ namespace MultiShop.Catalog.Services.FeatureServices
     {
         private readonly IMongoCollection<Feature> _featureCollection;
         private readonly IMapper _mapper;
-
         public FeatureService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString); // bağlantı stringi
