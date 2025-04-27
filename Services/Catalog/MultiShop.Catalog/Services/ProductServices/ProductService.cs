@@ -54,7 +54,17 @@ namespace MultiShop.Catalog.Services.ProductServices
 			return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
 		}
 
-		public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
+        public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string CategoryId)
+        {
+            var values = await _productCollection.Find(x => x.CategoryId == CategoryId).ToListAsync();
+            foreach (var item in values)
+            {
+                item.Category = await _categoryCollection.Find<Category>(x => x.CategoryId == item.CategoryId).FirstAsync();
+            }
+            return _mapper.Map<List<ResultProductWithCategoryDto>>(values);
+        }
+
+        public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
 		{
 			var values = _mapper.Map<Product>(updateProductDto);
 			await _productCollection.FindOneAndReplaceAsync(x => x.ProductId == updateProductDto.ProductId, values);
