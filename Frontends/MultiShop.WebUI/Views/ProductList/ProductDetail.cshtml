@@ -1,4 +1,4 @@
-﻿@{
+﻿@{	
 	ViewData["Title"] = "ProductList";
 	Layout = "~/Views/UILayout/_UILayout.cshtml";
 }
@@ -19,9 +19,9 @@
 <div class="container-fluid pb-5">
 	<div class="row px-xl-5">
 
-		@await Component.InvokeAsync("_ProductDetailImageSliderComponentPartial")
+		@await Component.InvokeAsync("_ProductDetailImageSliderComponentPartial", new { productId = ViewBag.productId })
 
-		@await Component.InvokeAsync("_ProductDetailFeatureComponentPartial")
+		@await Component.InvokeAsync("_ProductDetailFeatureComponentPartial", new { productId=ViewBag.productId })
 
 	</div>
 	<div class="row px-xl-5">

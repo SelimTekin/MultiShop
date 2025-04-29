@@ -11,10 +11,10 @@ namespace MultiShop.WebUI.ViewComponents.ProductListViewComponents
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<IViewComponentResult> InvokeAsync(string id)
+        public async Task<IViewComponentResult> InvokeAsync(string categoryId)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategoryByCategoryId?id=" + id);
+            var responseMessage = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategoryByCategoryId?id=" + categoryId);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync(); // gelen veriyi string formatta oku

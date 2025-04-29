@@ -4,10 +4,11 @@ namespace MultiShop.Catalog.Services.ProductImageServices
 {
 	public interface IProductImageService
 	{
-		Task<List<ResultProductImageDto>> GetAllProductImageAsync(); // Tüm kategorileri liste (liste ResultProductImageDto tipinde) şeklinde getirir
-		Task CreateProductImageAsync(CreateProductImageDto productImageDto); // Kategori ekler
-		Task UpdateProductImageAsync(UpdateProductImageDto productImageDto); // Kategori günceller
-		Task DeleteProductImageAsync(string id);                    // Kategori siler
-		Task<GetByIdProductImageDto> GetByIdProductImageAsync(string id); // id'ye göre kategori getirir
+		Task<List<ResultProductImageDto>> GetAllProductImageAsync();
+		Task CreateProductImageAsync(CreateProductImageDto productImageDto);
+		Task UpdateProductImageAsync(UpdateProductImageDto productImageDto);
+		Task DeleteProductImageAsync(string id);
+		Task<GetByIdProductImageDto> GetByIdProductImageAsync(string id);
+		Task<GetByIdProductImageDto> GetByProductIdImageAsync(string id);
 	}
 }
