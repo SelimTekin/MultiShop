@@ -38,11 +38,17 @@ namespace MultiShop.Catalog.Services.ProductDetailServices
 
 		public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
 		{
-			var values = await _ProductDetailCollection.Find<ProductDetail>(x => x.ProductDetailID == id).FirstOrDefaultAsync(); // <ProductDetail> -> sınıfı için çalışacak anlamına geliyor
+			var values = await _ProductDetailCollection.Find<ProductDetail>(x => x.ProductDetailID == id).FirstOrDefaultAsync();
 			return _mapper.Map<GetByIdProductDetailDto>(values);
 		}
 
-		public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
+        public async Task<GetByIdProductDetailDto> GetByProductIdProductDetailAsync(string id)
+        {
+            var values = await _ProductDetailCollection.Find<ProductDetail>(x => x.ProductId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductDetailDto>(values);
+        }
+
+        public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
 		{
 			var values = _mapper.Map<ProductDetail>(updateProductDetailDto);
 

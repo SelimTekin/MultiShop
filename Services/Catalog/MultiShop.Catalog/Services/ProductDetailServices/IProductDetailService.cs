@@ -4,10 +4,11 @@ namespace MultiShop.Catalog.Services.ProductDetailServices
 {
 	public interface IProductDetailService
 	{
-		Task<List<ResultProductDetailDto>> GetAllProductDetailAsync(); // Tüm kategorileri liste (liste ResultProductDetailDto tipinde) şeklinde getirir
-		Task CreateProductDetailAsync(CreateProductDetailDto productDetailDto); // Kategori ekler
-		Task UpdateProductDetailAsync(UpdateProductDetailDto productDetailDto); // Kategori günceller
-		Task DeleteProductDetailAsync(string id);                    // Kategori siler
-		Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id); // id'ye göre kategori getirir
+		Task<List<ResultProductDetailDto>> GetAllProductDetailAsync();
+		Task CreateProductDetailAsync(CreateProductDetailDto productDetailDto);
+		Task UpdateProductDetailAsync(UpdateProductDetailDto productDetailDto);
+		Task DeleteProductDetailAsync(string id);
+		Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id);
+		Task<GetByIdProductDetailDto> GetByProductIdProductDetailAsync(string id);
 	}
 }
