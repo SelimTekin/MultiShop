@@ -69,6 +69,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateComment(UpdateCommentDto updateCommentDto)
         {
+            updateCommentDto.Status = true; // Yorumun durumunu güncelle
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateCommentDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
