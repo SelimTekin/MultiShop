@@ -1,6 +1,6 @@
-﻿namespace MultiShop.Comment.Entities
+﻿namespace MultiShop.DtoLayer.CommentDtos
 {
-    public class UserComment
+    public class UpdateCommentDto
     {
         public int UserCommentId { get; set; }
         public string NameSurname { get; set; }
