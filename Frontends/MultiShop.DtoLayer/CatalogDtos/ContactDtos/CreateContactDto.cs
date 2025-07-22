@@ -1,8 +1,7 @@
-﻿namespace MultiShop.Catalog.Dtos.ContactDtos
+﻿namespace MultiShop.DtoLayer.CatalogDtos.ContactDtos
 {
-    public class ResultContactDto
+    public class CreateContactDto
     {
-        public string ContactId { get; set; }
         public string NameSurname { get; set; }
         public string Email { get; set; }
         public string Subject { get; set; }

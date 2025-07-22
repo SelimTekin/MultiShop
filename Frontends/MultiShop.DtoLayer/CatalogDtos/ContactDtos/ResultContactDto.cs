@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.ContactDtos
+﻿namespace MultiShop.DtoLayer.CatalogDtos.ContactDtos
 {
     public class ResultContactDto
     {

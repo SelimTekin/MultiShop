@@ -11,4 +11,3 @@
         public DateTime SendDate { get; set; }
     }
 }
-}
