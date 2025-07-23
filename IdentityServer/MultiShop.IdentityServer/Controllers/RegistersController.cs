@@ -9,7 +9,8 @@ using static IdentityServer4.IdentityServerConstants;
 
 namespace MultiShop.IdentityServer.Controllers
 {
-	[Authorize(LocalApi.PolicyName)] // bu attribute'ın altında kalan yerler IdentityServerAccessToken'a sahip olmak zorunda
+	//[Authorize(LocalApi.PolicyName)] // bu attribute'ın altında kalan yerler IdentityServerAccessToken'a sahip olmak zorunda
+	[AllowAnonymous]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class RegistersController : ControllerBase
