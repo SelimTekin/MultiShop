@@ -1,4 +1,21 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using MultiShop.WebUI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+    options.LoginPath = "/Login/Index";
+    options.LogoutPath = "/Login/Logout";
+    options.AccessDeniedPath = "/Login/AccessDenied";
+    options.Cookie.HttpOnly = true; // HttpOnly özelliði, çerezlerin JavaScript tarafýndan eriþilmesini engeller
+    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // Çerezlerin güvenli baðlantýlarda kullanýlmasýný saðlar
+    options.Cookie.SameSite = SameSiteMode.Strict; // Çerezlerin yalnýzca ayný site içindeki isteklerde kullanýlmasýný saðlar
+    options.Cookie.Name = "MultiShopJwtCookie";
+});
+
+builder.Services.AddHttpContextAccessor(); // HttpContext eriþimini saðlar
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 // Add services to the container.
 builder.Services.AddHttpClient();
@@ -18,7 +35,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

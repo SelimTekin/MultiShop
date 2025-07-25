@@ -29,7 +29,7 @@ namespace MultiShop.WebUI.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var stringContent = new StringContent(JsonSerializer.Serialize(createLoginDto), Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("http://localhost:5001/api/Login", stringContent);
+            var response = await client.PostAsync("http://localhost:5001/api/Logins", stringContent);
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
@@ -42,7 +42,7 @@ namespace MultiShop.WebUI.Controllers
                 {
                     JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
                     var token = handler.ReadJwtToken(tokenModel.Token);
-                    var claims = token.Claims.ToList(); 
+                    var claims = token.Claims.ToList();
 
                     if(tokenModel.Token != null)
                     {
