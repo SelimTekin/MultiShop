@@ -1,13 +1,44 @@
-﻿using MultiShop.DtoLayer.IdentityDtos.LoginDtos;
+﻿using Microsoft.Extensions.Options;
+using MultiShop.DtoLayer.IdentityDtos.LoginDtos;
 using MultiShop.WebUI.Services.Interface;
+using MultiShop.WebUI.Settings;
+using IdentityModel.Client;
 
 namespace MultiShop.WebUI.Services.Concrete
 {
     public class IdentityService : IIdentityService
     {
-        public Task<bool> SignIn(SignUpDto signUpDto)
+        private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ClientSettings _clientSettings;
+
+        // IOptions<ClientSettings> is used to inject the settings from the configuration (in appsettings.json file)
+        public IdentityService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings)
         {
-            throw new NotImplementedException();
+            _httpClient = httpClient;
+            _httpContextAccessor = httpContextAccessor;
+            _clientSettings = clientSettings.Value;
+        }
+
+        public async Task<bool> SignIn(SignUpDto signUpDto)
+        {
+            var discoveryEndPoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+            {
+                Address = "http://localhost:5001",
+                Policy = new DiscoveryPolicy
+                {
+                    RequireHttps = false // Set to true in production
+                }
+            });
+
+            var passwordTokenRequest = new PasswordTokenRequest
+            {
+                ClientId = _clientSettings.MultiShopManagerClient.ClientId,
+                ClientSecret = _clientSettings.MultiShopManagerClient.ClientSecret,
+                UserName = signUpDto.Username,
+                Password = signUpDto.Password,
+                Address = discoveryEndPoint.TokenEndpoint
+            };
         }
     }
 }
