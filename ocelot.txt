@@ -1,0 +1,4 @@
+       "AuthenticationOptions": {
+        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
+        "AllowedScopes": [ "ImagesFullPermission" ]
+      },

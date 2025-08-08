@@ -20,6 +20,7 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceOrder"){Scopes = {"OrderFullPermission"}},
 			new ApiResource("ResourceCargo"){Scopes = {"CargoFullPermission"}},
 			new ApiResource("ResourceBasket"){Scopes = {"BasketFullPermission"}},
+			new ApiResource("ResourceOcelot"){Scopes = {"OcelotFullPermission"}},
 			new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
 		};
 
@@ -40,6 +41,7 @@ namespace MultiShop.IdentityServer
 			new ApiScope("OrderFullPermission", "Full authority for catalog operations"),
 			new ApiScope("CargoFullPermission", "Full authority for cargo operations"),
 			new ApiScope("BasketFullPermission", "Full authority for basket operations"),
+			new ApiScope("OcelotFullPermission", "Full authority for ocelot operations"),
 			new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
 		};
 
@@ -52,7 +54,7 @@ namespace MultiShop.IdentityServer
 				ClientName="Multi Shop Visitor User",
 				AllowedGrantTypes=GrantTypes.ClientCredentials, // Neye izin verildiği ile ilgili bir property -> Kimlik işlemleri için kullanacağımız property
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
-				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
+				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission" }
 			},
 
 			// Manager
@@ -62,7 +64,7 @@ namespace MultiShop.IdentityServer
 				ClientName="Multi Shop Manager User",
 				AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, // Giriş yapan kullanıcının şifresine göre çalışsın
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
-				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission" }
+				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission", "OcelotFullPermission" }
 			},
 
 			// Admin
@@ -72,7 +74,7 @@ namespace MultiShop.IdentityServer
 				ClientName="Multi Shop Admin User",
 				AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, // Giriş yapan kullanıcının şifresine göre çalışsın
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
-				AllowedScopes={  "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission",
+				AllowedScopes={  "CatalogFullPermission", "CatalogReadPermission", "DiscountFullPermission", "OrderFullPermission", "CargoFullPermission", "BasketFullPermission", "OcelotFullPermission"
                 IdentityServerConstants.LocalApi.ScopeName, // yereldeki apiden scope'un adına ulaş
 				IdentityServerConstants.StandardScopes.Email,
 				IdentityServerConstants.StandardScopes.OpenId,
