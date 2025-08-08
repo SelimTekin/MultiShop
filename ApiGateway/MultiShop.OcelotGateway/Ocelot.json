@@ -57,7 +57,7 @@
     // Cargo Mikroservis
     {
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamPathTemplate": "/services/basket/{everything}",
+      "UpstreamPathTemplate": "/services/cargo/{everything}",
       "UpstreamScheme": "http",
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "OcelotAuthenticationScheme",
