@@ -67,7 +67,11 @@ namespace MultiShop.IdentityServer
 				ClientName="Multi Shop Manager User",
 				AllowedGrantTypes=GrantTypes.ResourceOwnerPassword, // Giriş yapan kullanıcının şifresine göre çalışsın
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
-				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImageFullPermission", "OcelotFullPermission" }
+				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImageFullPermission", "OcelotFullPermission",
+                IdentityServerConstants.LocalApi.ScopeName, // yereldeki apiden scope'un adına ulaş
+				IdentityServerConstants.StandardScopes.Email,
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile, }
 			},
 
 			// Admin

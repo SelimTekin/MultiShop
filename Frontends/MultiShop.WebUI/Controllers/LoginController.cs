@@ -32,48 +32,9 @@ namespace MultiShop.WebUI.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> Index(CreateLoginDto createLoginDto)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var stringContent = new StringContent(JsonSerializer.Serialize(createLoginDto), Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("http://localhost:5001/api/Logins", stringContent);
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var tokenModel = JsonSerializer.Deserialize<JwtResponseModel>(jsonData, new JsonSerializerOptions
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                });
-
-                if (tokenModel != null)
-                {
-                    JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-                    var token = handler.ReadJwtToken(tokenModel.Token);
-                    var claims = token.Claims.ToList();
-
-                    if (tokenModel.Token != null)
-                    {
-                        claims.Add(new Claim("multishoptoken", tokenModel.Token));
-                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
-                        var authProps = new AuthenticationProperties
-                        {
-                            ExpiresUtc = tokenModel.ExpireDate,
-                            IsPersistent = true, // Kullanıcı oturumunun kalıcı olmasını sağlar
-                            //ExpiresUtc = DateTime.UtcNow.AddDays(7) // Oturumun 7 gün boyunca geçerli olmasını sağlar
-                        };
-                        await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                        var id = _loginService.GetUserId;
-                        return RedirectToAction("Index", "Default");
-                    }
-                }
-            }
+        {   
             return View();
         }
-
-        //[HttpGet]
-        //public IActionResult SignIn()
-        //{
-        //    return View();
-        //}
 
         //[HttpPost]
         public async Task<IActionResult> SignIn(SignInDto signInDto)
