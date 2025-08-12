@@ -5,7 +5,7 @@
         public string OcelotUrl { get; set; }
         public string IdentityServerUrl { get; set; }
         public ServiceApi Catalog { get; set; }
-        public ServiceApi Iamge { get; set; }
+        public ServiceApi Image { get; set; }
         public ServiceApi Discount { get; set; }
         public ServiceApi Order { get; set; }
         public ServiceApi Cargo { get; set; }

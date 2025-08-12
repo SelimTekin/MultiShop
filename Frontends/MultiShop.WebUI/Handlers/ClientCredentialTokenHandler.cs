@@ -1,4 +1,5 @@
-﻿using MultiShop.WebUI.Services.Interfaces;
+﻿
+using MultiShop.WebUI.Services.Interfaces;
 using System.Net;
 using System.Net.Http.Headers;
 
@@ -11,21 +12,15 @@ namespace MultiShop.WebUI.Handlers
         {
             _clientCredentialTokenService = clientCredentialTokenService;
         }
-
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var accessToken = await _clientCredentialTokenService.GetToken();
-            // Add the access token to the request headers
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await _clientCredentialTokenService.GetToken());
             var response = await base.SendAsync(request, cancellationToken);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                // hata mesajı
+                //hata mesajı
             }
-
             return response;
-
         }
     }
 }

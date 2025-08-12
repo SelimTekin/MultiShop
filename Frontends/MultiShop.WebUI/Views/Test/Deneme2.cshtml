@@ -1,0 +1,13 @@
+﻿@model List<ResultCategoryDto>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title">@item.CategoryName</h5>
+		</div>
+	</div>
+}
