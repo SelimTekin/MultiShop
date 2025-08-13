@@ -57,7 +57,8 @@ namespace MultiShop.IdentityServer
 				ClientName="Multi Shop Visitor User",
 				AllowedGrantTypes=GrantTypes.ClientCredentials, // Neye izin verildiği ile ilgili bir property -> Kimlik işlemleri için kullanacağımız property
 				ClientSecrets={new Secret("multishopsecret".Sha256())}, // şifre
-				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CommentFullPermission", "ImageFullPermission", "OcelotFullPermission" }
+				AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CommentFullPermission", "ImageFullPermission", "OcelotFullPermission", IdentityServerConstants.LocalApi.ScopeName },
+                AllowAccessTokensViaBrowser = true // Tarayıcı üzerinden erişime izin veriyoruz
 			},
 
 			// Manager

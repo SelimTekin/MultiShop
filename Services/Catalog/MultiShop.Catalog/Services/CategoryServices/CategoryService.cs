@@ -36,10 +36,10 @@ namespace MultiShop.Catalog.Services.CategoryServices
 			return _mapper.Map<List<ResultCategoryDto>>(values); // ResultCategoryDto'yu values ile map'ledik
 		}
 
-		public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
+		public async Task<UpdateCategoryDto> GetByIdCategoryAsync(string id)
 		{
 			var values = await _categoryCollection.Find<Category>(x => x.CategoryId == id).FirstOrDefaultAsync(); // <Category> -> sınıfı için çalışacak anlamına geliyor
-			return _mapper.Map<GetByIdCategoryDto>(values);
+			return _mapper.Map<UpdateCategoryDto>(values);
 		}
 
 		public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
