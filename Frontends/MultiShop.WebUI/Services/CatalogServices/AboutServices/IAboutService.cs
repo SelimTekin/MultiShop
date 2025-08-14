@@ -1,6 +1,7 @@
-﻿using MultiShop.Catalog.Dtos.AboutDtos;
+﻿
+using MultiShop.DtoLayer.CatalogDtos.AboutDtos;
 
-namespace MultiShop.Catalog.Services.AboutServices
+namespace MultiShop.WebUI.Services.CatalogServices.AboutServices
 {
     public interface IAboutService
     {
@@ -8,6 +9,6 @@ namespace MultiShop.Catalog.Services.AboutServices
         Task CreateAboutAsync(CreateAboutDto AboutDto);
         Task UpdateAboutAsync(UpdateAboutDto AboutDto);
         Task DeleteAboutAsync(string id);
-        Task<GetByIdAboutDto> GetByIdAboutAsync(string id);
+        Task<UpdateAboutDto> GetByIdAboutAsync(string id);
     }
 }
