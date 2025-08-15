@@ -13,16 +13,22 @@ namespace MultiShop.WebUI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-        public IActionResult Index(string categoryId)
+        public IActionResult Index(string id)
 		{
-			ViewBag.categoryId = categoryId;
+            ViewBag.categoryId = id;
+            ViewBag.directory1 = "Ana Sayfa";
+            ViewBag.directory2 = "Ürünler";
+            ViewBag.directory2 = "Ürün Listesi";
 			return View();
 		}
 
 		public IActionResult ProductDetail(string id)
 		{
 			ViewBag.productId = id;
-			return View();
+            ViewBag.directory1 = "Ana Sayfa";
+            ViewBag.directory2 = "Ürün Listesi";
+            ViewBag.directory2 = "Ürün Detayları";
+            return View();
 		}
 		[HttpGet]
 		public PartialViewResult AddComment()
