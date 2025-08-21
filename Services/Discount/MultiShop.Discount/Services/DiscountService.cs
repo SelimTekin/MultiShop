@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using MultiShop.Discount.Context;
 using MultiShop.Discount.Dtos;
+using System.Diagnostics;
 
 namespace MultiShop.Discount.Services
 {
@@ -74,6 +75,18 @@ namespace MultiShop.Discount.Services
 			{
 				var values = await connection.QueryFirstOrDefaultAsync<ResultDiscountCouponDto>(query, parameters);
                 return values;
+            }
+        }
+
+        public int GetDiscountCouponRate(string code)
+        {
+            var query = "select Rate from Coupons where Code=@code";
+			var parameters = new DynamicParameters();
+			parameters.Add("@code", code);
+			using(var connection = _context.CreateConnection())
+			{
+				var values = connection.QueryFirstOrDefault<int>(query, parameters);
+				return values;
             }
         }
 
